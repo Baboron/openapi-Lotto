@@ -53,7 +53,7 @@ paths:
                 superZahl:
                   type: number
       responses:
-        '200':
+        '201':
           description: Succesfully created a tipp
               
               
