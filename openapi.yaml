@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  description: "openAPI for Lotto-Project"
+  version: "1.0.0"
+  title: "Lotto-Project API"
+tags:
+  - name: Lotto
+paths:
+  /tipps/{userID}:
+    get:
+      tags:
+        - Lotto
+      parameters:
+        - name: userID
+          in: path
+          description: ID of user to get the tipps from
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tipps of a user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTipp'
+  /tipps:
+    post:
+      tags:
+        - Lotto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userID:
+                  type: string
+                number1:
+                  type: number
+                number2:
+                  type: number
+                number3:
+                  type: number
+                number4:
+                  type: number
+                number5:
+                  type: number
+                number6:
+                  type: number
+                superZahl:
+                  type: number
+      responses:
+        '200':
+          description: Succesfully created a tipp
+              
+              
+              
+components:
+  schemas:
+    UserTipp:
+      type: object
+      properties:
+        id:
+          type: string
+        userID:
+          type: string
+        number1:
+          type: number
+        number2:
+          type: number
+        number3:
+          type: number
+        number4:
+          type: number
+        number5:
+          type: number
+        number6:
+          type: number
+        superZahl:
+          type: number
+        date:
+          type: string
