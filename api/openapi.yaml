@@ -56,7 +56,43 @@ paths:
         '201':
           description: Succesfully created a tipp
               
-              
+  /ziehungen/{date}:
+    get:
+      tags:
+        - Lotto
+      parameters:
+        - name: date
+          in: path
+          description: Date of the required drawing
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lotto draw of the day.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ziehung'
+  /ziehung:
+    post:
+      tags:
+        - Lotto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                summe:
+                  type: number
+      responses:
+        '201':
+          description: Succesfully created a tipp
               
 components:
   schemas:
@@ -83,3 +119,28 @@ components:
           type: number
         date:
           type: string
+        gewinn:
+          type: number
+    Ziehung:
+      type: object
+      properties:
+        id:
+          type: string
+        number1:
+          type: number
+        number2:
+          type: number
+        number3:
+          type: number
+        number4:
+          type: number
+        number5:
+          type: number
+        number6:
+          type: number
+        superZahl:
+          type: number
+        date:
+          type: string
+        gewinn:
+          type: number
